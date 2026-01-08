@@ -9,8 +9,6 @@ import os
 import pandas as pd
 import numpy as np
 from astroquery.sdss import SDSS
-from astropy import coordinates as coords
-import requests
 
 def download_sdss_sample_data(output_path='data/sdss_stars.csv', sample_size=10000):
     """

@@ -96,7 +96,12 @@ def prepare_features_and_labels(df, feature_cols=None):
         ]
     
     # Remove any rows with missing values in features or labels
+    original_size = len(df)
     df_clean = df.dropna(subset=feature_cols + ['spectral_type'])
+    dropped_rows = original_size - len(df_clean)
+    
+    if dropped_rows > 0:
+        print(f"Warning: Dropped {dropped_rows} rows ({100*dropped_rows/original_size:.1f}%) due to missing values")
     
     print(f"Using {len(feature_cols)} features: {feature_cols}")
     print(f"Clean dataset size: {len(df_clean)} samples")
